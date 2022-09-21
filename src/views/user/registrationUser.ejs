@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário</title>
+</head>
+
+<body>
+    <h1>Cadastro de Usuário</h1>
+    <form action="/register/user/save" method="POST">
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" />
+        <br />
+        <label for="password">Senha</label>
+        <input type="password" name="password" id="password" />
+        <br />
+        <input type="submit" value="registration" />
+    </form>
+
+    <% if(message) { %>
+        <p>
+            <label style="color: red"><%= message %></label>
+        </p>
+    <% } %>
+</body>
+
+</html>
