@@ -13,8 +13,31 @@ async function connect() {
 }
 
 export async function selectUsuario() {
-    const conn = await connect()
-    const [rows] = await conn.query('SELECT * FROM usuario;')
+    const conn = await connect(),
+        [rows] = await conn.query('SELECT * FROM usuario;')
 
     return rows
+}
+
+export async function insertUsuario(usuario) {
+    const conn = await connect(),
+        sql = 'INSERT INTO usuario(nome, senha) VALUES (?, ?);',
+        values = [usuario.nome, usuario.senha]
+
+    return await conn.query(sql, values)
+}
+
+export async function deleteUsuario(id) {
+    const conn = await connect(),
+        sql = 'DELETE FROM usuario where id=?;'
+
+    return await conn.query(sql, [id])
+}
+
+export async function updateUsuario(id, usuario) {
+    const conn = await connect(),
+        sql = 'UPDATE usuario SET nome=?, senha=? WHERE id=?',
+        values = [usuario.nome, usuario.senha, id]
+    
+    return await conn.query(sql, values)
 }
