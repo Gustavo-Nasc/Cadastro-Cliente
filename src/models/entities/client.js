@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import database from "../services/dborm";
+import { database } from "../services/dborm";
 
-const Cliente = new database.Sequelize.define('cliente', {
+export const Cliente = database.define('cliente', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -17,5 +17,3 @@ const Cliente = new database.Sequelize.define('cliente', {
     },
     endereco: DataTypes.STRING
 });
-
-export default Cliente;
